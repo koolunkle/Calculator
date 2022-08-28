@@ -48,6 +48,34 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun onEqual(view: View) {
+        if (lastNumeric) {
+            var value = binding.txtCalculator.text.toString()
+            var prefix = ""
+
+            try {
+                if (value.startsWith("-")) {
+                    prefix = "-"
+                    value = value.substring(1)
+                }
+                if (value.contains("-")) {
+                    val splitValue = value.split("-")
+
+                    var one = splitValue[0]
+                    val two = splitValue[1]
+
+                    if (prefix.isNotEmpty()) {
+                        one = prefix + one
+                    }
+
+                    binding.txtCalculator.text = (one.toDouble() - two.toDouble()).toString()
+                }
+            } catch (e: ArithmeticException) {
+                e.printStackTrace()
+            }
+        }
+    }
+
     private fun isOperatorAdded(value: String): Boolean {
         return if (value.startsWith("-")) {
             false
