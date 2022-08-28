@@ -165,6 +165,18 @@
             app:layout_constraintTop_toBottomOf="@id/btnMultiply" />
 
         <Button
+            android:id="@+id/btnDot"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:onClick="onDecimalPoint"
+            android:padding="30dp"
+            android:text="@string/btn_dot"
+            app:layout_constraintEnd_toStartOf="@id/btnZero"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnOne" />
+
+        <Button
             android:id="@+id/btnZero"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -173,8 +185,8 @@
             android:padding="30dp"
             android:text="@string/btn_zero"
             app:layout_constraintEnd_toStartOf="@id/btnClear"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnOne" />
+            app:layout_constraintStart_toEndOf="@id/btnDot"
+            app:layout_constraintTop_toBottomOf="@id/btnTwo" />
 
         <Button
             android:id="@+id/btnClear"
@@ -186,7 +198,7 @@
             android:text="@string/btn_clear"
             app:layout_constraintEnd_toStartOf="@id/btnAdd"
             app:layout_constraintStart_toEndOf="@id/btnZero"
-            app:layout_constraintTop_toBottomOf="@id/btnTwo" />
+            app:layout_constraintTop_toBottomOf="@id/btnThree" />
 
         <Button
             android:id="@+id/btnAdd"

@@ -11,6 +11,10 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    private var lastNumeric: Boolean = false
+
+    private var lastDot: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -18,10 +22,20 @@ class MainActivity : AppCompatActivity() {
 
     fun onDigit(view: View) {
         binding.txtCalculator.append((view as Button).text)
+        lastNumeric = true
+        lastDot = false
     }
 
     fun onClear(view: View) {
         binding.txtCalculator.text = ""
+    }
+
+    fun onDecimalPoint(view: View) {
+        if (lastNumeric && !lastDot) {
+            binding.txtCalculator.append(".")
+            lastNumeric = false
+            lastDot = true
+        }
     }
 
 }

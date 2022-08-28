@@ -2,6 +2,7 @@
     <string name="app_name">Calculator</string>
 
     <string name="btn_equal">=</string>
+    <string name="btn_dot">.</string>
     <string name="btn_zero">0</string>
     <string name="btn_clear">CLR</string>
     <string name="btn_add">+</string>
