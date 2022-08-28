@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
                     prefix = "-"
                     value = value.substring(1)
                 }
+                // Subtraction
                 if (value.contains("-")) {
                     val splitValue = value.split("-")
 
@@ -68,12 +69,64 @@ class MainActivity : AppCompatActivity() {
                         one = prefix + one
                     }
 
-                    binding.txtCalculator.text = (one.toDouble() - two.toDouble()).toString()
+                    binding.txtCalculator.text =
+                        removeZeroAfterDot((one.toDouble() - two.toDouble()).toString())
+                }
+                // Addition
+                else if (value.contains("+")) {
+                    val splitValue = value.split("+")
+
+                    var one = splitValue[0]
+                    val two = splitValue[1]
+
+                    if (prefix.isNotEmpty()) {
+                        one = prefix + one
+                    }
+
+                    binding.txtCalculator.text =
+                        removeZeroAfterDot((one.toDouble() + two.toDouble()).toString())
+                }
+                // Division
+                else if (value.contains("/")) {
+                    val splitValue = value.split("/")
+
+                    var one = splitValue[0]
+                    val two = splitValue[1]
+
+                    if (prefix.isNotEmpty()) {
+                        one = prefix + one
+                    }
+
+                    binding.txtCalculator.text =
+                        removeZeroAfterDot((one.toDouble() / two.toDouble()).toString())
+                }
+                // Multiplication
+                else if (value.contains("*")) {
+                    val splitValue = value.split("*")
+
+                    var one = splitValue[0]
+                    val two = splitValue[1]
+
+                    if (prefix.isNotEmpty()) {
+                        one = prefix + one
+                    }
+
+                    binding.txtCalculator.text =
+                        removeZeroAfterDot((one.toDouble() * two.toDouble()).toString())
                 }
             } catch (e: ArithmeticException) {
                 e.printStackTrace()
             }
         }
+    }
+
+    private fun removeZeroAfterDot(result: String): String {
+        var value = result
+        if (result.contains(".0")) {
+            value = result.substring(0, result.length - 2)
+        }
+
+        return value
     }
 
     private fun isOperatorAdded(value: String): Boolean {
