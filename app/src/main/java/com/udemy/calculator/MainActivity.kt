@@ -2,7 +2,7 @@ package com.udemy.calculator
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.udemy.calculator.databinding.ActivityMainBinding
@@ -17,7 +17,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onDigit(view: View) {
-        Toast.makeText(this, "Button clicked", Toast.LENGTH_SHORT).show()
+        binding.txtCalculator.append((view as Button).text)
+    }
+
+    fun onClear(view: View) {
+        binding.txtCalculator.text = ""
     }
 
 }
